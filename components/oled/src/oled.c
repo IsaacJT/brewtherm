@@ -38,7 +38,7 @@ void oled_init(void)
 	if (oled.handle) {
 		ESP_LOGW(TAG, "Task already initialised; skipping");
 	}
-	xTaskCreate(oled_task, "oled", STACK_SIZE, NULL, tskIDLE_PRIORITY,
+	xTaskCreate(oled_task, "oled", STACK_SIZE, NULL, tskIDLE_PRIORITY+1,
 		    &oled.handle);
 
 	oled.queue = xQueueCreate(QUEUE_LEN, sizeof(struct oled_update));
